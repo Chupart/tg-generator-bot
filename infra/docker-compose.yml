@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  tg-generator-bot:
+    build:
+      context: ../
+      dockerfile: infra/tg-generator-bot/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../:/app
+
+  prompt-generator-api:
+    build:
+      context: ../
+      dockerfile: infra/prompt-generator-api/Dockerfile
+    ports:
+      - "5444:5000"

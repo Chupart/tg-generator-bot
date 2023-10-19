@@ -1,0 +1,40 @@
+
+\-\-\-
+**TG Generator Bot**
+This tool generates images based on the parameters you provide\.
+Here's how to format your input:
+`parameter\_name: parameter\_value`
+
+For instance:
+
+```js
+/gen prompt: cat
+negative\_prompt: dog
+batch\_count: 3
+```
+
+"Draw Things" is used as a backend\. Therefore, most of the parameters you'll encounter come directly from their API\. To heck these parameters, refer to the command /api\_def\. It will show example set of parameters Draw Things accepts
+
+**Meta Parameters:**
+\- `generate\_separately (default: False)`: When this parameter is included, the application disregards the `batch\_count` value and sets it to 1\. It then sends `batch\_count` requests to Draw Things and dispatches the generated results one at a time\.
+\- `optimize\_prompt (default: False)`: If you include this parameter, your prompt will be refined using the [Prompt Generator API](https://github\.com/jordip/prompt\-generator\-api)\. Note that this API has certain restrictions\. To introduce more versatility, you can use the `prompt\_prefix` parameter\. It will be added before the prompt, once the enhanced prompt is crafted\.
+
+For example:
+
+```js
+/gen prompt: cat
+negative\_prompt: dog
+batch\_count: 5
+generate\_separately: true
+optimize\_prompt: true
+prompt\_prefix: black
+```
+
+This will instruct the tool to create an image of a "*black* cat" with added features from the Prompt Generator\. The tool will then send 5 separate images to Telegram, one after the other\.
+
+You could also use
+```js
+/gen_long cat
+```
+Which will ouptut parameters  applied during API call\.
+\-\-\-

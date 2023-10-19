@@ -1,0 +1,46 @@
+{
+    "batch_size": {{ batch_size | default(1) }},
+    "negative_prompt": "{{ negative_prompt | default('paintings, sketches, (worst quality:2), (low quality:2), (normal quality:2), normal quality, skin spots, acnes, skin blemishes, age spot, glans') }}",
+    "height": {{ height | default(512) }},
+    "original_height": {{ original_height | default(512) }},
+    "hires_fix_height": {{ hires_fix_height | default(448) }},
+    "crop_top": {{ crop_top | default(0) }},
+    "seed": {{ seed | default(515659768) }},
+    "crop_left": {{ crop_left | default(0) }},
+    "negative_aesthetic_score": {{ negative_aesthetic_score | default(2.5) }},
+    "image_guidance": {{ image_guidance | default(1.5) }},
+    "negative_original_height": {{ negative_original_height | default(512) }},
+    "clip_skip": {{ clip_skip | default(1) }},
+{% if model is string and model|length > 3 %}
+    "model": "{{ model | default('chilloutmix_f16.ckpt') }}",
+    {% endif %}
+    "guidance_scale": {{ guidance_scale | default(18) }},
+    "sampler": "{{ sampler | default('DPM++ SDE Karras') }}",
+    "batch_count": {{ batch_count | default(1) }},
+    "hires_fix_width": {{ hires_fix_width | default(448) }},
+    "seed_mode": "{{ seed_mode | default('Scale Alike') }}",
+    "negative_original_width": {{ negative_original_width | default(512) }},
+    "original_width": {{ original_width | default(512) }},
+    "hires_fix_strength": {{ hires_fix_strength | default(0.699999988079071) }},
+    "mask_blur": {{ mask_blur | default(1.5) }},
+    "clip_weight": {{ clip_weight | default(1) }},
+    "zero_negative_prompt": {{ zero_negative_prompt | default(False) | tojson }},
+    {% if refiner_model is string and refiner_model|length > 3 %}
+    "refiner_model": {{ refiner_model }},
+    {% endif %}
+    "hires_fix": {{ hires_fix | default(False) | tojson }},
+    "strength": {{ strength | default(1) }},
+    {% if prompt_prefix %}
+    "prompt": "{{prompt_prefix}} {{ prompt }}",
+    {% else %}
+    "prompt": "{{ prompt }}",
+    {% endif %}
+    "target_width": {{ target_width | default(512) }},
+    "target_height": {{ target_height | default(512) }},
+    "refiner_start": {{ refiner_start | default(0.8500000238418579) }},
+    "aesthetic_score": {{ aesthetic_score | default(6) }},
+    "steps": {{ steps | default(77) }},
+    "image_prior_steps": {{ image_prior_steps | default(5) }},
+    "negative_prompt_for_image_prior": {{ negative_prompt_for_image_prior | default(True) | tojson }},
+    "width": {{ width | default(512) }}
+}
