@@ -6,7 +6,7 @@ class PromptGenerator:
     def __init__(self, api_url):
         self.api_url = api_url
 
-    def generate_text(self, prompt, temperature=0.9, top_k=80, max_length=80,
+    def generate_text(self, prompt, temperature=0.9, top_k=80, max_length=140,
                       repetition_penalty=1.2, num_return_sequences=5):
         """
         Generate text based on the input prompt and other parameters.

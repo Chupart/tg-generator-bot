@@ -66,13 +66,14 @@ async def on_generate_long(message: Message):
 async def on_generate(message: Message, long_message: bool = False):
     msg_text = tg_command_args(message.text)
     logger.info(f"Received message: {msg_text}")
-    await message.reply(f"Received message, generating prompts...")
+    to_del = await message.reply(f"Received message, generating prompts...")
     payloads = api_wrapper.get_generation_request_json(msg_text)
 
     # Initializing generation_results object
     generation_results = [{'payload': payload, 'images': [], 'message_ids': []} for payload in payloads]
 
     try:
+        await to_del.delete()
         for index, gen_result in enumerate(generation_results):
             await process_single_payload(message, index, generation_results, long_message)
     except Exception as e:

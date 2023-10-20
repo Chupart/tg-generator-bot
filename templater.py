@@ -34,11 +34,11 @@ class ParamsTemplate:
         Returns:
         dict: A dictionary where the keys are the keys from the message, and the values are the values from the message.
         """
-        # Regular expression to extract "key: value" pairs
-        pattern = re.compile(r"(\w+):\s*([^:]*)(?=\s+\w+:|$)")
+        pattern = re.compile(r"(\w+):\s*((?:\(.*?\)|\\:|[^:])*)(?=\s+\w+:|$)")
 
-        # Find all matches in the message
         matches = pattern.findall(message)
 
-        # Convert matches to a dictionary and return
-        return {key: value.strip() for key, value in matches}
+        # Process the escaped colons
+        extracted_params = [(key, value.replace("\\:", ":")) for key, value in matches]
+
+        return {key: value.strip() for key, value in extracted_params}
