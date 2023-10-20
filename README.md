@@ -64,6 +64,15 @@ TG Generator Bot simplifies the process of generating images via Telegram by int
 
 It's been a hot minute since I last dabbled in software development, so things might be a tad rusty. 🛠️ But, hey, shoutout to ChatGPT for doing most of the heavy lifting here! 🚀
 
+
+## TODO 
+
+- [ ] Normal OOP for bot code
+- [ ] Stop carrying global state with generation_results, use class
+- [ ] Add proper image gallery message deletion (now it collects all messages ever sent and tries to delete them on every message send)
+- [ ] Add tasks queue
+- [ ] Add more than one worker
+
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
