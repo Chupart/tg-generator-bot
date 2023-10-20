@@ -71,6 +71,7 @@ It's been a hot minute since I last dabbled in software development, so things m
 - [ ] Stop carrying global state with generation_results, use class
 - [ ] Add proper image gallery message deletion (now it collects all messages ever sent and tries to delete them on every message send)
 - [ ] Add tasks queue
+- [ ] Split galleries if number of images to generate in batch > 10  
 - [ ] Add more than one worker
 
 ## License
