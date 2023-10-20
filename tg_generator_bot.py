@@ -72,6 +72,9 @@ async def on_generate(message: Message, long_message: bool = False):
     # Initializing generation_results object
     generation_results = [{'payload': payload, 'images': [], 'message_ids': []} for payload in payloads]
 
+    if len(generation_results) >= 10:
+        await to_del.edit_text("Maximum number of images in one batch is 10")
+        return
     try:
         await to_del.delete()
         for index, gen_result in enumerate(generation_results):
