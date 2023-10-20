@@ -14,7 +14,7 @@
 {% if model is string and model|length > 3 %}
     "model": "{{ model | default('chilloutmix_f16.ckpt') }}",
     {% endif %}
-    "guidance_scale": {{ guidance_scale | default(18) }},
+    "guidance_scale": {{ guidance_scale | default(8) }},
     "sampler": "{{ sampler | default('DPM++ SDE Karras') }}",
     "batch_count": {{ batch_count | default(1) }},
     "hires_fix_width": {{ hires_fix_width | default(448) }},
